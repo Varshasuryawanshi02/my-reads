@@ -10,7 +10,7 @@ class BookShelf extends React.PureComponent {
                 <h2>{heading}</h2>
                 <div className='books-container'>
                     {Object.keys(books).map(key => (
-                        <Book key={books[key].title} title={books[key].title} />
+                        <Book key={books[key].id} title={books[key].title} />
                     ))}
                 </div>
             </div>
