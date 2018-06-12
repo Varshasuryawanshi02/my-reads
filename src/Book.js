@@ -5,7 +5,8 @@ class Book extends React.PureComponent {
     render() {
         return (
             <div className='book'>
-                <p>{this.props.title}</p>
+                <div className='book-cover' style={{height: 200, width: 150, backgroundImage: `url(${this.props.imageUrl})`}}></div>
+                <div className='book-title'>{this.props.title}</div>
             </div>
         )
     }
