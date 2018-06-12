@@ -8,8 +8,9 @@ class BookShelf extends React.PureComponent {
         return (
             <div>
                 <h2>{heading}</h2>
+                {/* Only render books if book data has been properly fetched */}
                 {books && Object.keys(books).length > 0
-                ?   <div className='books-container'>
+                &&   <div className='books-container'>
                         {Object.keys(books).map(key => (
                             <Book
                                 key={books[key].id}
@@ -17,7 +18,6 @@ class BookShelf extends React.PureComponent {
                                 imageUrl={books[key].imageLinks.thumbnail}/>
                         ))}
                     </div>
-                :   <div>No books to display</div>
                 }
             </div>
         )

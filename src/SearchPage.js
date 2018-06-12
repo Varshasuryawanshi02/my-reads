@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchBar from './SearchBar'
 import BookShelf from './BookShelf'
-import { search } from './BooksAPI'
+import { search, update } from './BooksAPI'
 
 class SearchPage extends React.Component {
     state = {
