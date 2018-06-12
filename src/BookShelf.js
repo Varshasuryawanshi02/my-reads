@@ -4,12 +4,13 @@ import Book from './Book'
 
 class BookShelf extends React.PureComponent {
     render() {
+        const { books, heading } = this.props
         return (
             <div>
-                <h2>{this.props.heading}</h2>
+                <h2>{heading}</h2>
                 <div className='books-container'>
-                    {this.props.books.map(book => (
-                        <Book title={book.title} />
+                    {Object.keys(books).map(key => (
+                        <Book key={books[key].title} title={books[key].title} />
                     ))}
                 </div>
             </div>
