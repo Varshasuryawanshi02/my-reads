@@ -6,3 +6,9 @@
     display: flex;
     width: 100%;
 }
+
+.book-cover {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;  
+}
