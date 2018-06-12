@@ -11,7 +11,6 @@ class SearchPage extends React.Component {
     handleSearchTermChange = async (searchTerm) => {
         const searchResults = await search(searchTerm)
 
-        // Check that search results are valid before calling setState
         if (searchResults && Object.keys(searchResults).length > 0 && !searchResults.hasOwnProperty('error')) {
             this.setState({ searchResults })
         }

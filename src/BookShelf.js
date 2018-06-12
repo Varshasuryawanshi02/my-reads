@@ -8,7 +8,6 @@ class BookShelf extends React.PureComponent {
         return (
             <div>
                 <h2>{heading}</h2>
-                {/* Only render books if book data has been properly fetched */}
                 {books && Object.keys(books).length > 0
                 &&   <div className='books-container'>
                         {Object.keys(books).map(key => (

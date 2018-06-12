@@ -11,7 +11,6 @@ class MainPage extends React.Component {
     }
 
     async componentDidMount() {
-        // API call to get all books
         const allBooks = await getAll()
         console.log(allBooks)
 
@@ -19,7 +18,6 @@ class MainPage extends React.Component {
         const wantToRead = []
         const read = []
 
-        // Assign books to correct shelves
         Object.keys(allBooks).forEach(key => {
             switch (allBooks[key].shelf) {
                 case 'currentlyReading':
@@ -30,11 +28,9 @@ class MainPage extends React.Component {
                     break;
                 case 'read':
                     read.push(allBooks[key])
-                    break;
             }
         })
 
-        // Call setState to update shelves
         this.setState({
             currReading,
             wantToRead,
