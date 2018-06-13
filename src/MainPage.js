@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './App.css'
 import BookShelf from './BookShelf'
 import { getAll, update } from './BooksAPI'
@@ -12,7 +13,6 @@ class MainPage extends React.Component {
 
     async componentDidMount() {
         const allBooks = await getAll()
-        console.log(allBooks)
 
         const currReading = []
         const wantToRead = []
@@ -36,14 +36,9 @@ class MainPage extends React.Component {
             wantToRead,
             read
         })
-
-        console.log(this.state.currReading)
-        console.log(this.state.wantToRead)
-        console.log(this.state.read)
     }
 
     render() {
-        console.log('currReading in render()', this.state.currReading)
         return (
             <div>
                 <div className='header'>
@@ -53,6 +48,9 @@ class MainPage extends React.Component {
                     <BookShelf heading='Currently Reading' books={this.state.currReading}/>
                     <BookShelf heading='Want to Read' books={this.state.wantToRead} />
                     <BookShelf heading='Read'books={this.state.read}/>
+                </div>
+                <div class='search-btn'>
+                    <Link to='/search'>Search</Link>
                 </div>
             </div>
         )

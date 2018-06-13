@@ -5,6 +5,7 @@ import Book from './Book'
 class BookShelf extends React.PureComponent {
     render() {
         const { books, heading } = this.props
+        console.log(books)
         return (
             <div>
                 <h2>{heading}</h2>
@@ -14,6 +15,7 @@ class BookShelf extends React.PureComponent {
                             <Book
                                 key={books[key].id}
                                 title={books[key].title}
+                                // TODO: handle books with no valid imageURL
                                 imageUrl={books[key].imageLinks.thumbnail}/>
                         ))}
                     </div>
