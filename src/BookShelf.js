@@ -1,11 +1,12 @@
 import React from 'react'
 import './App.css'
 import Book from './Book'
+import noCoverImageUrl from './img/cover-not-available.png'
 
 class BookShelf extends React.PureComponent {
     render() {
         const { books, heading } = this.props
-        console.log(books)
+
         return (
             <div>
                 <h2>{heading}</h2>
@@ -14,9 +15,14 @@ class BookShelf extends React.PureComponent {
                         {Object.keys(books).map(key => (
                             <Book
                                 key={books[key].id}
+                                authors={books[key].authors || ['Unkown']}
                                 title={books[key].title}
-                                // TODO: handle books with no valid imageURL
-                                imageUrl={books[key].imageLinks.thumbnail}/>
+                                imageUrl={
+                                    books[key].imageLinks
+                                    ? books[key].imageLinks.thumbnail
+                                    : noCoverImageUrl
+                                }
+                            />
                         ))}
                     </div>
                 }

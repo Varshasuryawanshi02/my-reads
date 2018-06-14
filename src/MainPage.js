@@ -49,7 +49,7 @@ class MainPage extends React.Component {
                     <BookShelf heading='Want to Read' books={this.state.wantToRead} />
                     <BookShelf heading='Read'books={this.state.read}/>
                 </div>
-                <div class='search-btn'>
+                <div className='search-btn'>
                     <Link to='/search'>Search</Link>
                 </div>
             </div>

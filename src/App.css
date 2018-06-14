@@ -10,7 +10,9 @@
 .book-cover {
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center bottom;  
+    background-position: center bottom;
+    height: 200px;
+    width: 150px;
 }
 
 .search-btn {
