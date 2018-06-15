@@ -15,6 +15,7 @@ class BookShelf extends React.PureComponent {
                         {Object.keys(books).map(key => (
                             <Book
                                 key={books[key].id}
+                                id={books[key].id}
                                 authors={books[key].authors || ['Unkown']}
                                 title={books[key].title}
                                 imageUrl={
@@ -22,6 +23,8 @@ class BookShelf extends React.PureComponent {
                                     ? books[key].imageLinks.thumbnail
                                     : noCoverImageUrl
                                 }
+                                shelf={books[key].shelf}
+                                onOptionChange={this.props.onOptionChange}
                             />
                         ))}
                     </div>

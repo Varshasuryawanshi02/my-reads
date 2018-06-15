@@ -1,7 +1,12 @@
 import React from 'react'
 import './App.css'
+import ChangeShelfMenu from './ChangeShelfMenu'
 
 class Book extends React.PureComponent {
+    handleOptionChange = (shelf) => {
+        const thisBook = { id: this.props.id }
+        this.props.onOptionChange(thisBook, shelf)
+    }
     
     makePretty = authors => (
         authors.map(author => (
@@ -11,8 +16,6 @@ class Book extends React.PureComponent {
 
     render() {
         const { authors, imageUrl, title } = this.props
-        console.log(imageUrl)
-        console.log(typeof(imageUrl))
 
         let authorsString = ''
         if (authors.length > 1) {
@@ -24,6 +27,12 @@ class Book extends React.PureComponent {
         return (
             <div className='book'>
                 <div className='book-cover' style={{ backgroundImage: `url(${imageUrl})` }}>
+                    <div className='change-shelf-menu-component'>
+                        <ChangeShelfMenu
+                            value={this.props.shelf || 'none'}
+                            onOptionChange={this.handleOptionChange}
+                        />
+                    </div>
                 </div>
                 <div className='book-title'>
                     Title: {title}

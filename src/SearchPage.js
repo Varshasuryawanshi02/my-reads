@@ -6,16 +6,25 @@ import { search, update } from './BooksAPI'
 
 class SearchPage extends React.Component {
     state = {
+        searchTerm: '',
         searchResults: []
+    }
+
+    handleOptionChange = (book, shelf) => {
+        if (!shelf) {
+            shelf = ''
+        }
+        update(book, shelf)
+        this.handleSearchTermChange(this.state.searchTerm)
     }
 
     handleSearchTermChange = async (searchTerm) => {
         const searchResults = await search(searchTerm)
 
         if (!searchResults || Object.keys(searchResults).length === 0 || searchResults.hasOwnProperty('error')) {
-            this.setState({ searchResults: [] })
+            this.setState({ searchTerm, searchResults: [] })
         } else {
-            this.setState({ searchResults })
+            this.setState({ searchTerm, searchResults })
         }
     }
 
@@ -23,8 +32,14 @@ class SearchPage extends React.Component {
         return(
             <div>
                 <Link to='/'>Back</Link>
-                <SearchBar onSearchTermChange={this.handleSearchTermChange}/>
-                <BookShelf heading='Search Results' books={this.state.searchResults}/>
+                <SearchBar
+                    onSearchTermChange={this.handleSearchTermChange}
+                />
+                <BookShelf
+                    heading='Search Results'
+                    books={this.state.searchResults}
+                    onOptionChange={this.handleOptionChange}
+                />
             </div>
         )
     }

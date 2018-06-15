@@ -8,7 +8,7 @@ class SearchBar extends React.PureComponent {
     handleChange = (event) => {
         const searchTerm = event.target.value
         this.setState({ searchTerm })
-        this.props.onSearchTermChange(searchTerm)
+        this.props.onSearchTermChange( searchTerm )
     }
 
     render() {

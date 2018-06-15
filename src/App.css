@@ -8,11 +8,24 @@
 }
 
 .book-cover {
+    position: relative;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
     height: 200px;
     width: 150px;
+}
+
+.change-shelf-menu select {
+    opacity: 0;
+}
+
+.change-shelf-menu-component {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
 }
 
 .search-btn {

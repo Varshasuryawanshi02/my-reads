@@ -6,23 +6,37 @@ import { getAll, update } from './BooksAPI'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 class MainPage extends React.Component {
+    //TODO: Fix slow book transfer and duplicate books bug
+
     state = {
-        currReading: [],
+        currentlyReading: [],
         wantToRead: [],
         read: []
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        this.refreshShelf()
+    }
+
+    handleOptionChange = (book, shelf) => {
+        if (!shelf) {
+            shelf = ''
+        }
+        update(book, shelf)
+        this.refreshShelf()
+    }
+
+    async refreshShelf() {
         const allBooks = await getAll()
 
-        const currReading = []
+        const currentlyReading = []
         const wantToRead = []
         const read = []
 
         Object.keys(allBooks).forEach(key => {
             switch (allBooks[key].shelf) {
                 case 'currentlyReading':
-                    currReading.push(allBooks[key])
+                    currentlyReading.push(allBooks[key])
                     break;
                 case 'wantToRead':
                     wantToRead.push(allBooks[key])
@@ -33,7 +47,7 @@ class MainPage extends React.Component {
         })
 
         this.setState({
-            currReading,
+            currentlyReading,
             wantToRead,
             read
         })
@@ -46,9 +60,21 @@ class MainPage extends React.Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className='book-shelves'>
-                    <BookShelf heading='Currently Reading' books={this.state.currReading} />
-                    <BookShelf heading='Want to Read' books={this.state.wantToRead} />
-                    <BookShelf heading='Read'books={this.state.read} />
+                    <BookShelf
+                        heading='Currently Reading'
+                        books={this.state.currentlyReading}
+                        onOptionChange={this.handleOptionChange}
+                    />
+                    <BookShelf
+                        heading='Want to Read'
+                        books={this.state.wantToRead}
+                        onOptionChange={this.handleOptionChange}
+                    />
+                    <BookShelf
+                        heading='Read'
+                        books={this.state.read}
+                        onOptionChange={this.handleOptionChange}
+                    />
                 </div>
                 <div className='search-btn'>
                     <Link to='/search'>
