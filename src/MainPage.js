@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import './App.css'
 import BookShelf from './BookShelf'
 import { getAll, update } from './BooksAPI'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 class MainPage extends React.Component {
     state = {
@@ -45,12 +46,14 @@ class MainPage extends React.Component {
                     <h1>MyReads</h1>
                 </div>
                 <div className='book-shelves'>
-                    <BookShelf heading='Currently Reading' books={this.state.currReading}/>
+                    <BookShelf heading='Currently Reading' books={this.state.currReading} />
                     <BookShelf heading='Want to Read' books={this.state.wantToRead} />
-                    <BookShelf heading='Read'books={this.state.read}/>
+                    <BookShelf heading='Read'books={this.state.read} />
                 </div>
                 <div className='search-btn'>
-                    <Link to='/search'>Search</Link>
+                    <Link to='/search'>
+                        <FontAwesomeIcon icon='plus-circle' size='5x' color='#707070' />
+                    </Link>
                 </div>
             </div>
         )
