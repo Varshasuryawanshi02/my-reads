@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './App.css'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
@@ -22,4 +23,9 @@ export default class ChangeShelfMenu extends React.Component {
             </div>
         )
     }
+}
+
+ChangeShelfMenu.propTypes = {
+    value: PropTypes.string,
+    onOptionChange: PropTypes.func.isRequired
 }

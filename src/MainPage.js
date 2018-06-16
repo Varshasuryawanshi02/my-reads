@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import './App.css'
 import BookShelf from './BookShelf'
@@ -33,5 +34,12 @@ const MainPage = (props) => (
         </div>
     </div>
 )
+
+MainPage.propTypes = {
+    onOptionChange: PropTypes.func.isRequired,
+    currentlyReading: PropTypes.arrayOf(PropTypes.object),
+    wantToRead: PropTypes.arrayOf(PropTypes.object),
+    read: PropTypes.arrayOf(PropTypes.object),
+}
 
 export default MainPage

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class SearchBar extends React.PureComponent {
     state = {
@@ -21,4 +22,8 @@ export default class SearchBar extends React.PureComponent {
             </div>
         )
     }
+}
+
+SearchBar.propTypes = {
+    onSearchTermChange: PropTypes.func.isRequired
 }

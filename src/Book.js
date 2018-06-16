@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './App.css'
 import ChangeShelfMenu from './ChangeShelfMenu'
 import noCoverImageUrl from './img/cover-not-available.png'
@@ -60,4 +61,13 @@ export default class Book extends React.Component {
             </div>
         )
     }
+}
+
+Book.propTypes = {
+    id: PropTypes.string,
+    authors: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+    imageLinks: PropTypes.object,
+    shelf: PropTypes.string,
+    onOptionChange: PropTypes.func.isRequired,
 }

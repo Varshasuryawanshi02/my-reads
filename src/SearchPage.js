@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom' 
 import SearchBar from './SearchBar'
 import BookShelf from './BookShelf'
@@ -50,4 +51,11 @@ export default class SearchPage extends React.Component {
             </div>
         )
     }
+}
+
+SearchPage.propTypes = {
+    onOptionChange: PropTypes.func.isRequired,
+    currentlyReading: PropTypes.arrayOf(PropTypes.object),
+    wantToRead: PropTypes.arrayOf(PropTypes.object),
+    read: PropTypes.arrayOf(PropTypes.object)
 }
