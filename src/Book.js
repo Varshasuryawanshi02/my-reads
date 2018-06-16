@@ -21,11 +21,11 @@ export default class Book extends React.Component {
         let authorsString = ''
 
         if (!authors || authors.length === 0) {
-            authorsString = 'Author: Unkown'
+            authorsString = 'Unkown'
         } else if (authors.length > 1) {
-            authorsString = `Authors: ${this.makePretty(authors)}`
+            authorsString = this.makePretty(authors)
         } else {
-            authorsString = `Author: ${authors[0]}`
+            authorsString = authors[0]
         }
 
         return authorsString
@@ -53,7 +53,7 @@ export default class Book extends React.Component {
                     </div>
                 </div>
                 <div className='book-title'>
-                    Title: {title}
+                    {title}
                 </div>
                 <div className='book-author'>
                     {this.makeAuthorsString(authors)}

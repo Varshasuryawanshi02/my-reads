@@ -7,9 +7,6 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 const MainPage = (props) => (
     <div>
-        <div className='header'>
-            <h1>MyReads</h1>
-        </div>
         <div className='book-shelves'>
             <BookShelf
                 heading='Currently Reading'
@@ -29,7 +26,7 @@ const MainPage = (props) => (
         </div>
         <div className='search-btn'>
             <Link to='/search'>
-                <FontAwesomeIcon icon='plus-circle' size='5x' color='#707070' />
+                <FontAwesomeIcon icon='plus-circle' size='5x' color='#c43231' />
             </Link>
         </div>
     </div>

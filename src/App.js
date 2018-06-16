@@ -81,29 +81,34 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <Route
-                    exact path='/'
-                    render={() => (
-                        <MainPage
-                            onOptionChange={this.handleOptionChange}
-                            currentlyReading={this.state.currentlyReading}
-                            wantToRead={this.state.wantToRead}
-                            read={this.state.read}
-                        />
-                    )}
-                />
-                <Route
-                    path='/search'
-                    render={() => (
-                        <SearchPage
-                            onOptionChange={this.handleOptionChange}
-                            currentlyReading={this.state.currentlyReading}
-                            wantToRead={this.state.wantToRead}
-                            read={this.state.read}
-                        />
-                    )}
-                />
+            <div className='app'>
+                <div className='header'>
+                    MyReads
+                </div>
+                <div className='container'>
+                    <Route
+                        exact path='/'
+                        render={() => (
+                            <MainPage
+                                onOptionChange={this.handleOptionChange}
+                                currentlyReading={this.state.currentlyReading}
+                                wantToRead={this.state.wantToRead}
+                                read={this.state.read}
+                            />
+                        )}
+                    />
+                    <Route
+                        path='/search'
+                        render={() => (
+                            <SearchPage
+                                onOptionChange={this.handleOptionChange}
+                                currentlyReading={this.state.currentlyReading}
+                                wantToRead={this.state.wantToRead}
+                                read={this.state.read}
+                            />
+                        )}
+                    />
+                </div>
             </div>
         )
     }
