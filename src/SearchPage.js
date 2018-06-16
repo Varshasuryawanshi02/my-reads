@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 import BookShelf from './BookShelf'
 import { search } from './BooksAPI'
 
-class SearchPage extends React.Component {
+export default class SearchPage extends React.Component {
     state = {
         searchResults: []
     }
@@ -51,5 +51,3 @@ class SearchPage extends React.Component {
         )
     }
 }
-
-export default SearchPage

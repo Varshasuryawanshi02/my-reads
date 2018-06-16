@@ -11,7 +11,7 @@ import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
 
 fontawesome.library.add(faArrowLeft, faChevronCircleDown, faPlusCircle)
 
-class App extends React.Component {
+export default class App extends React.Component {
     state = {
         currentlyReading: [],
         wantToRead: [],
@@ -108,5 +108,3 @@ class App extends React.Component {
         )
     }
 }
-
-export default App

@@ -1,6 +1,6 @@
 import React from 'react'
 
-class SearchBar extends React.PureComponent {
+export default class SearchBar extends React.PureComponent {
     state = {
         searchTerm: ''
     }
@@ -22,5 +22,3 @@ class SearchBar extends React.PureComponent {
         )
     }
 }
-
-export default SearchBar

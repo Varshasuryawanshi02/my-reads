@@ -3,7 +3,7 @@ import './App.css'
 import ChangeShelfMenu from './ChangeShelfMenu'
 import noCoverImageUrl from './img/cover-not-available.png'
 
-class Book extends React.Component {
+export default class Book extends React.Component {
     handleOptionChange = (shelf) => {
         const thisBook = {
             id: this.props.id,
@@ -61,5 +61,3 @@ class Book extends React.Component {
         )
     }
 }
-
-export default Book

@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import Book from './Book'
 
-class BookShelf extends React.Component {
+export default class BookShelf extends React.Component {
     render() {
         const { books, heading, onOptionChange } = this.props
 
@@ -27,5 +27,3 @@ class BookShelf extends React.Component {
         )
     }
 }
-
-export default BookShelf
