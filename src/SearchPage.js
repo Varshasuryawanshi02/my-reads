@@ -2,29 +2,36 @@ import React from 'react'
 import { Link } from 'react-router-dom' 
 import SearchBar from './SearchBar'
 import BookShelf from './BookShelf'
-import { search, update } from './BooksAPI'
+import { search } from './BooksAPI'
 
 class SearchPage extends React.Component {
     state = {
-        searchTerm: '',
         searchResults: []
     }
 
-    handleOptionChange = (book, shelf) => {
-        if (!shelf) {
-            shelf = ''
-        }
-        update(book, shelf)
-        this.handleSearchTermChange(this.state.searchTerm)
-    }
-
     handleSearchTermChange = async (searchTerm) => {
-        const searchResults = await search(searchTerm)
+        const results = await search(searchTerm)
 
-        if (!searchResults || Object.keys(searchResults).length === 0 || searchResults.hasOwnProperty('error')) {
-            this.setState({ searchTerm, searchResults: [] })
+        if (!results || Object.keys(results).length === 0 || results.hasOwnProperty('error')) {
+            this.setState({ searchResults: [] })
         } else {
-            this.setState({ searchTerm, searchResults })
+            // adds shelf info to search results
+            const resultsWithShelfInfo = results.map(book => {
+                if (this.props.currentlyReading.find(b => b.id === book.id)) {
+                    book.shelf = 'currentlyReading'
+                    return book
+                } else if (this.props.wantToRead.find(b => b.id === book.id)) {
+                    book.shelf = 'wantToRead'
+                    return book
+                } else if (this.props.read.find(b => b.id === book.id)) {
+                    book.shelf = 'read'
+                    return book
+                } else {
+                    return book
+                }
+            })
+
+            this.setState({ searchResults: resultsWithShelfInfo })
         }
     }
 
@@ -38,7 +45,7 @@ class SearchPage extends React.Component {
                 <BookShelf
                     heading='Search Results'
                     books={this.state.searchResults}
-                    onOptionChange={this.handleOptionChange}
+                    onOptionChange={this.props.onOptionChange}
                 />
             </div>
         )

@@ -1,11 +1,10 @@
 import React from 'react'
 import './App.css'
 import Book from './Book'
-import noCoverImageUrl from './img/cover-not-available.png'
 
-class BookShelf extends React.PureComponent {
+class BookShelf extends React.Component {
     render() {
-        const { books, heading } = this.props
+        const { books, heading, onOptionChange } = this.props
 
         return (
             <div>
@@ -16,16 +15,11 @@ class BookShelf extends React.PureComponent {
                             <Book
                                 key={books[key].id}
                                 id={books[key].id}
-                                authors={books[key].authors || ['Unkown']}
+                                authors={books[key].authors}
                                 title={books[key].title}
-                                imageUrl={
-                                    books[key].imageLinks
-                                    ? books[key].imageLinks.thumbnail
-                                    : noCoverImageUrl
-                                }
+                                imageLinks={books[key].imageLinks}
                                 shelf={books[key].shelf}
-                                onOptionChange={this.props.onOptionChange}
-                            />
+                                onOptionChange={onOptionChange} />
                         ))}
                     </div>
                 }

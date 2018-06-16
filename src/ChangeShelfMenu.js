@@ -3,8 +3,8 @@ import './App.css'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 class ChangeShelfMenu extends React.Component {
-    handleOptionChange = event => {
-        const shelf = event.target.value
+    handleOptionChange = (event) => {
+        const shelf = event.target.value === 'none' ? '' : event.target.value
         this.props.onOptionChange(shelf)
     }
 

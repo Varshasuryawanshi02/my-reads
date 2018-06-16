@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import './App.css'
 import MainPage from './MainPage'
 import SearchPage from './SearchPage'
+import { getAll, update } from './BooksAPI'
 import fontawesome from '@fortawesome/fontawesome'
 import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft'
 import faChevronCircleDown from '@fortawesome/fontawesome-free-solid/faChevronCircleDown'
@@ -11,11 +12,98 @@ import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
 fontawesome.library.add(faArrowLeft, faChevronCircleDown, faPlusCircle)
 
 class App extends React.Component {
+    state = {
+        currentlyReading: [],
+        wantToRead: [],
+        read: []
+    }
+
+    async componentDidMount() {
+        const allBooks = await getAll()
+
+        const currentlyReading = []
+        const wantToRead = []
+        const read = []
+
+        Object.keys(allBooks).forEach(key => {
+            switch (allBooks[key].shelf) {
+                case 'currentlyReading':
+                    currentlyReading.push(allBooks[key])
+                    break;
+                case 'wantToRead':
+                    wantToRead.push(allBooks[key])
+                    break;
+                case 'read':
+                    read.push(allBooks[key])
+            }
+        })
+
+        this.setState({
+            currentlyReading,
+            wantToRead,
+            read
+        })
+    }
+
+    addBookToShelf(book, shelf) {
+        book.shelf = shelf
+        this.setState({ [shelf]: this.state[shelf].concat(book) })
+    }
+
+    handleOptionChange = (book, destinationShelf) => {
+        if (destinationShelf && book.shelf) {
+            this.transferBookToShelf(book, destinationShelf)
+        } else if (destinationShelf) {
+            this.addBookToShelf(book, destinationShelf)
+        } else {
+            this.removeBookFromShelf(book, book.shelf)
+        }
+
+        update(book, destinationShelf)
+    }
+
+    removeBookFromShelf(book, shelf) {
+        const newShelf = this.state[shelf].filter(b => b.id !== book.id)
+        this.setState({ [shelf]: newShelf })
+    }
+
+    transferBookToShelf(book, shelf) {
+        const shelfForRemovalName = book.shelf
+        book.shelf = shelf
+        const newShelfForAdd = this.state[shelf].concat(book)
+        const newShelfForRemoval = this.state[shelfForRemovalName].filter(b => b.id !== book.id)
+
+        this.setState({
+            [shelfForRemovalName]: newShelfForRemoval,
+            [shelf]: newShelfForAdd
+        })
+    }
+
     render() {
         return (
             <div>
-                <Route exact path='/' component={MainPage} />
-                <Route path='/search' component={SearchPage} />
+                <Route
+                    exact path='/'
+                    render={() => (
+                        <MainPage
+                            onOptionChange={this.handleOptionChange}
+                            currentlyReading={this.state.currentlyReading}
+                            wantToRead={this.state.wantToRead}
+                            read={this.state.read}
+                        />
+                    )}
+                />
+                <Route
+                    path='/search'
+                    render={() => (
+                        <SearchPage
+                            onOptionChange={this.handleOptionChange}
+                            currentlyReading={this.state.currentlyReading}
+                            wantToRead={this.state.wantToRead}
+                            read={this.state.read}
+                        />
+                    )}
+                />
             </div>
         )
     }
