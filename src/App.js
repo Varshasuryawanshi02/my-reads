@@ -35,6 +35,9 @@ export default class App extends React.Component {
                     break;
                 case 'read':
                     read.push(allBooks[key])
+                    break;
+                default:
+                    // do nothing
             }
         })
 
