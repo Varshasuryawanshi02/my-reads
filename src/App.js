@@ -51,20 +51,27 @@ export default class App extends React.Component {
     }
 
     handleOptionChange = (book, destinationShelf) => {
+        const sourceShelf = book.shelf
+
         if (destinationShelf && book.shelf) {
             this.transferBookToShelf(book, destinationShelf)
         } else if (destinationShelf) {
             this.addBookToShelf(book, destinationShelf)
+        } else if (book.shelf) {
+            this.removeBookFromShelf(book)
         } else {
-            this.removeBookFromShelf(book, book.shelf)
+            // do nothing if source and destination shelf values are falsy (i.e. none)
+            return
         }
 
-        update(book, destinationShelf)
+        update(book, destinationShelf || 'none')
     }
 
-    removeBookFromShelf(book, shelf) {
-        const newShelf = this.state[shelf].filter(b => b.id !== book.id)
-        this.setState({ [shelf]: newShelf })
+    removeBookFromShelf(book) {
+        const shelfForRemovalName = book.shelf
+        book.shelf = ''
+        const newShelf = this.state[shelfForRemovalName].filter(b => b.id !== book.id)
+        this.setState({ [shelfForRemovalName]: newShelf })
     }
 
     transferBookToShelf(book, shelf) {
