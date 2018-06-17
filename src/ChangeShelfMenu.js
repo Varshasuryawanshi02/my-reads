@@ -12,7 +12,7 @@ export default class ChangeShelfMenu extends React.Component {
     render() {
         return (
             <div className='change-shelf-menu'>
-                <FontAwesomeIcon icon='chevron-circle-down' size='2x' color='#c43231'/>
+                <FontAwesomeIcon icon='chevron-circle-down' size='2x' color='#c43231' />
                 <select value={this.props.value} onChange={this.handleOptionChange}>
                     <option value='move' disabled={true}>Move to:</option>
                     <option value='currentlyReading'>Currently Reading</option>

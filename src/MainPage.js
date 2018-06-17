@@ -26,7 +26,7 @@ const MainPage = (props) => (
         </div>
         <div className='search-btn'>
             <Link to='/search'>
-                <FontAwesomeIcon icon='plus-circle' size='5x' color='#c43231' />
+                <FontAwesomeIcon icon='plus-circle' size='4x' color='#c43231' />
             </Link>
         </div>
     </div>

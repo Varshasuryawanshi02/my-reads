@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import BookShelf from './BookShelf'
 import { search } from './BooksAPI'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 export default class SearchPage extends React.Component {
     state = {
@@ -39,10 +40,18 @@ export default class SearchPage extends React.Component {
     render() {
         return(
             <div>
-                <Link to='/'>Back</Link>
-                <SearchBar
-                    onSearchTermChange={this.handleSearchTermChange}
-                />
+                <div className='search-bar-area'>
+                    <div className='inline-block'>
+                        <Link to='/'>
+                            <FontAwesomeIcon icon='arrow-left' size='2x' color='#c43231' />
+                        </Link>
+                    </div>
+                    <div className='inline-block search-bar-div'>
+                        <SearchBar
+                            onSearchTermChange={this.handleSearchTermChange}
+                        />
+                    </div>
+                </div>
                 <BookShelf
                     heading='Search Results'
                     books={this.state.searchResults}

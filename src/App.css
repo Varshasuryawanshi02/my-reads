@@ -62,6 +62,7 @@ hr {
     bottom: 30px;
     width: 30px;
     height: 30px;
+    cursor: pointer;
 }
 
 .change-shelf-menu-component {
@@ -81,13 +82,38 @@ hr {
 .header {
     color: #fff;
     font-size: 28px;
-    padding-left: 50px;
+    padding: 0 0 10px 50px;
+}
+
+.inline-block {
+    display: inline-block;
 }
 
 .search-btn {
     position: fixed;
     bottom: 100px;
     right: 140px;
+}
+
+.search-bar-area {
+    display: flex;
+    align-items: center;
+    margin: 20px auto 30px;
+}
+
+.search-bar-div {
+    width: 100%;
+    padding-right: 20px;
+}
+
+.search-input {
+    height: 30px;
+    width: 95%;
+    margin-left: 15px;
+    margin-right: 5px;
+    border-color: #c31432;
+    padding-left: 10px;
+    color: #c31432;
 }
 
 .shelf {
