@@ -151,6 +151,10 @@ hr {
         font-size: 14px;
     }
 
+    .change-shelf-menu-component {
+        top: 120px;
+    }
+
     .container {
         padding: 10px 20px;
     }
@@ -163,6 +167,10 @@ hr {
     .search-btn {
         bottom: 50px;
         right: 30px;
+    }
+
+    .shelf {
+        min-height: 218px;
     }
 
     .shelf-heading {
