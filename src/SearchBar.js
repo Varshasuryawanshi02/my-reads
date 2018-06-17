@@ -18,7 +18,8 @@ export default class SearchBar extends React.PureComponent {
                 <input className='search-input'
                     value={this.state.searchTerm}
                     onChange={this.handleChange}
-                    placeholder='Search for a book...' />
+                    placeholder='Search for a book...'
+                />
             </div>
         )
     }

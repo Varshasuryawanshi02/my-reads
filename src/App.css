@@ -116,6 +116,10 @@ hr {
     color: #c31432;
 }
 
+.selected-option {
+    color: #c31432;
+}
+
 .shelf {
     min-height: 313px;
 }
