@@ -21,4 +21,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # graphics files for documentation
-/graphics-for-doc
+/graphics-for-doc/instructions.xd
+/graphics-for-doc/main-page.png
+/graphics-for-doc/search-page.png
