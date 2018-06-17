@@ -51,8 +51,6 @@ export default class App extends React.Component {
     }
 
     handleOptionChange = (book, destinationShelf) => {
-        const sourceShelf = book.shelf
-
         if (destinationShelf && book.shelf) {
             this.transferBookToShelf(book, destinationShelf)
         } else if (destinationShelf) {
