@@ -123,3 +123,49 @@ hr {
 .shelf {
     min-height: 332px;
 }
+
+@media only screen and (max-width: 600px) {
+    .app {
+        padding: 50px 20px 40px;
+    }
+
+    .book {
+        margin: 10px;
+        width: 120px;
+    }
+
+    .books-container {
+        padding: 15px 0 15px;
+    }
+
+    .book-author {
+        font-size: 14px;
+    }
+
+    .book-cover {
+        height: 133px;
+        width: 100px;
+    }
+
+    .book-title {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px 20px;
+    }
+
+    .header {
+        text-align: center;
+        padding: 0;
+    }
+
+    .search-btn {
+        bottom: 50px;
+        right: 30px;
+    }
+
+    .shelf-heading {
+        text-align: center;
+    }
+}

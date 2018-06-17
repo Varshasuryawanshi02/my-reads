@@ -9,7 +9,9 @@ export default class BookShelf extends React.Component {
 
         return (
             <div>
-                <h3>{heading}</h3>
+                <div className='shelf-heading'>
+                    <h3>{heading}</h3>
+                </div>
                 <hr/>
                 <div className='shelf'>
                     {books && Object.keys(books).length > 0
