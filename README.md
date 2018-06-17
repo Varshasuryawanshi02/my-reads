@@ -1,4 +1,4 @@
-# my-reads
+# MyReads
 
 I created this project as part of the Udacity React Nanodegree.
 
