@@ -89,6 +89,13 @@ hr {
     display: inline-block;
 }
 
+.not-found-page {
+    box-sizing: border-box;
+    min-height: 700px;
+    text-align: center;
+    padding: 100px;
+}
+
 .search-btn {
     position: fixed;
     bottom: 100px;

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
 import MainPage from './MainPage'
 import SearchPage from './SearchPage'
+import NotFoundPage from './NotFoundPage'
 import { getAll, update } from './BooksAPI'
 import fontawesome from '@fortawesome/fontawesome'
 import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft'
@@ -94,28 +95,31 @@ export default class App extends React.Component {
                     MyReads
                 </div>
                 <div className='container'>
-                    <Route
-                        exact path='/'
-                        render={() => (
-                            <MainPage
-                                onOptionChange={this.handleOptionChange}
-                                currentlyReading={this.state.currentlyReading}
-                                wantToRead={this.state.wantToRead}
-                                read={this.state.read}
-                            />
-                        )}
-                    />
-                    <Route
-                        path='/search'
-                        render={() => (
-                            <SearchPage
-                                onOptionChange={this.handleOptionChange}
-                                currentlyReading={this.state.currentlyReading}
-                                wantToRead={this.state.wantToRead}
-                                read={this.state.read}
-                            />
-                        )}
-                    />
+                    <Switch >
+                        <Route
+                            exact path='/'
+                            render={() => (
+                                <MainPage
+                                    onOptionChange={this.handleOptionChange}
+                                    currentlyReading={this.state.currentlyReading}
+                                    wantToRead={this.state.wantToRead}
+                                    read={this.state.read}
+                                />
+                            )}
+                        />
+                        <Route
+                            path='/search'
+                            render={() => (
+                                <SearchPage
+                                    onOptionChange={this.handleOptionChange}
+                                    currentlyReading={this.state.currentlyReading}
+                                    wantToRead={this.state.wantToRead}
+                                    read={this.state.read}
+                                />
+                            )}
+                        />
+                        <Route component={NotFoundPage} />
+                    </Switch>
                 </div>
             </div>
         )
