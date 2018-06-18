@@ -14,7 +14,7 @@ const BookShelf = (props) => {
             <hr/>
             <div className='shelf'>
                 {books && Object.keys(books).length > 0
-                &&   <div className='books-container'>
+                ?   <div className='books-container'>
                         {Object.keys(books).map(key => (
                             <Book
                                 key={books[key].id}
@@ -25,6 +25,9 @@ const BookShelf = (props) => {
                                 shelf={books[key].shelf}
                                 onOptionChange={onOptionChange} />
                         ))}
+                    </div>
+                :   <div className='books-container-empty'>
+                        <h3>No books to display</h3>
                     </div>
                 }
             </div>

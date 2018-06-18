@@ -39,6 +39,16 @@ hr {
     padding: 30px 0 30px;
 }
 
+.books-container-empty {
+    text-align: center;
+}
+
+.books-container-empty h3 {
+    color: #ccc;
+    padding-top: 170px;
+    margin: 0;
+}
+
 .book-cover {
     position: relative;
     background-size: contain;
@@ -128,7 +138,7 @@ hr {
 }
 
 .shelf {
-    min-height: 332px;
+    min-height: 373px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -143,6 +153,10 @@ hr {
 
     .books-container {
         padding: 15px 0 15px;
+    }
+
+    .books-container-empty h3 {
+        padding-top: 130px;
     }
 
     .book-author {
@@ -177,7 +191,7 @@ hr {
     }
 
     .shelf {
-        min-height: 218px;
+        min-height: 264.667px;
     }
 
     .shelf-heading {
